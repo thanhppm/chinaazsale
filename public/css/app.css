@@ -1,0 +1,74 @@
+.custom-sign-in {
+  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #E9E1E1;
+}
+
+.custom-sign-in .form-signin {
+  background-color: #FFFFFF;
+  width: 500px;
+  padding: 20px 50px;
+  margin: auto;
+}
+
+.custom-sign-in .form-signin input {
+  border-radius: 0 !important;
+}
+
+.custom-sign-in .form-signin .checkbox {
+  font-weight: 400;
+}
+
+.custom-sign-in .form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.custom-nav {
+  background-color: #026aa7;
+  font-weight: 500;
+  padding: 0 !important;
+}
+
+.custom-nav .nav-item {
+  border-right: 1px solid #5186a5;
+  display: block;
+  padding: 5px 30px;
+}
+
+.custom-nav .nav-item .nav-link {
+  color: #fff;
+}
+
+.control-bar .search-button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+}
+
+.control-bar .search-button:hover {
+  background: #0b7dda;
+}
+
+.custom-pagination .page-link {
+  color: #000;
+}
+
+.custom-modal {
+  background: #f5f2f4 !important;
+}
+
