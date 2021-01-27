@@ -2,84 +2,137 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
+    private $user;
+    private $role;
+    public function __construct(User $user,Role $role)
+    {
+        $this->user=$user;
+        $this->role=$role;
+    }
+
+    
+
+    public function index()
+    {
+        return view('user.index');
+    }
     public function login()
     {
         return view('templates.login');
     }
-
-    public function post_Login(Request $request)
+    public function post_login(Request $request)
     {
-        // $arr=['email'=>$request->email,'password'=>$request->password];
-        // if(Auth::attempt($arr) && Auth::check())
-        // {
-        //     return view('demo');
-        // }
-        // else{
-        //     return view('login');
-        // }
-
-        if ($request->method() == 'POST') {
-            $login = [
-                'email' => $request->email,
-                'password' => $request->password,
-                 'role' => 'admin',
-                 //'status' => 1
-            ];
-            if (Auth::attempt($login) && Auth::check()) {
-                return redirect()->route('dashboard');
+            $this->validate($request,[
+                'email'=> 'required',
+                'password' => 'required'
+            ],[
+                'email.required' => 'bạn chưa nhập email',
+                'password.required' => 'bạn chưa nhập mật khẩu'
+            ]);
+        
+            if (Auth::attempt(['email'=>$request->email,'password'=>$request->password]) && Auth::check()) {
+                //dd(Auth::user()->cant('route.name'));
+                return redirect('admin/dashboard');
             } else {
-                return redirect()->back()->with('notification', 'Email hoặc mật khẩu không chính xác');
+                return redirect('login')->with('notification', 'Đăng nhập không hợp lệ! Bạn không có quyền truy cập.');
             }
-        }
-    }
-
-    public function register()
-    {
-        return view('register');
-    }
-
-
-    public function post_Register(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|max:20',
-            'passwordAgain' => 'required|same:password'
-        ], [
-            'name.required' => 'ban chua nhap ten',
-            'name.unique' => 'ten bi trung',
-            'email.required' => 'ban chua nhap email',
-            'email.email' => 'ban chua nhap dung dinh dang email',
-            'email.unique' => 'email da ton tai',
-            'password.required' => 'ban chua nhap mat khau',
-            'password.min' => 'mật khẩu tối thiểu chứa 6 kí tự',
-            'password.max' => 'mật khẩu tối đa chứa 20 kí tự',
-            'passwordAgain.required' => 'ban chua nhap lai mat khau',
-            'passwordAgain.same' => 'mat khau khong trung khop',
-        ]);
-
-
-        $user = new User;
-        $user->name = $request->name;
-        $user->password = bcrypt($request->password);
-        $user->email = $request->email;
-        $user->role = 'member';
-        $res =  $user->save();
-        if ($res == true) {
-            return redirect()->route('login')->with('status', 'tao tai khoan thanh cong');
-        } else {
-            return redirect()->route('register');
-        }
     }
     public function logout()
     {
         Auth::logout();
-        return view('templates.login');
+        return redirect('login');
+    }
+
+    public function add()
+    {
+        
+        $roles=$this->role->all();
+        return view('user.add',compact('roles'));
+    } 
+    public function store(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            //đổ dữ liệu vào DB
+        $user_create=$this->user->create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' =>bcrypt($request->password),
+            'status' => 1,
+        ]);
+        //đổ dữ liệu vào bảng trung gian role_user
+
+        // $roles=$request->roles;
+        // foreach ($roles as $roleId) {
+        //     DB::table('role_user')->insert([
+        //         'user_id' => $user_create->id,
+        //         'role_id' => $roleId,
+        //     ]);
+        // }
+        $user_create->roles()->attach($request->roles);//->roles():gọi phương thức roles() trong model User
+        DB::commit();
+        return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
+        
+    } 
+
+    public function edit($id){
+        $roles=$this->role->all();
+        $user=$this->user->findOrFail($id);
+       $list_role_of_user=DB::table('role_user')->where('user_id',$id)->pluck('role_id');//pluck lấy tất cả các giá trị của khóa đã cho
+       
+        return view('user.edit',compact('roles','user','list_role_of_user'));
+    }
+    
+    public function update(Request $request,$id)
+    {
+        try {
+            DB::beginTransaction();
+        //cập nhật bảng user
+        $this->user->where('id',$id)->update([
+            'name' => $request->name,
+            'name' => $request->username,
+            'name' => $request->email,
+            'name' => $request->phone,
+        ]);
+
+        //cập nhật bảng role_user
+        DB::table('role_user')->where('user_id',$id)->delete();
+        $user_update=$this->user->find($id);
+        $user_update->roles()->attach($request->roles);
+        DB::commit();
+        return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
+        
+    }
+
+    public function delete($id)
+    {
+        try {
+            DB::beginTransaction();
+            //xóa user
+            $user=$this->user->find($id);
+            $user->delete($id);
+            //xóa vai trò của user
+            $user->roles()->detach();//detach nguwocjj lại với attach,nó sẽ xóa đi tất cả bản ghi thuộc user này
+            DB::commit();
+            return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+        }
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboad')
+@section('title', 'Dashboard')
 
 @section('content')
 
@@ -10,19 +10,19 @@
   <div class="container-fluid">
     <form class="d-flex">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary me-3" type="submit"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-secondary me-3" type="submit"><i class="fas fa-search"></i></button>
       <button class="btn btn-outline-success">Xóa</button>
     </form>
-    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm tài khoản +</button>
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addModal">Thêm tài khoản <i class="fas fa-plus-circle"></i></button>
   </div>
 </div>
 
 <!---- Table ---->
 
 <div class="container-fluid">
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered align-middle">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th scope="col">#</th>
         <th scope="col">Tên đăng nhập</th>
         <th scope="col">Tên nhân viên</th>
@@ -34,76 +34,116 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="col">1</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">2</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">3</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">4</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">5</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">6</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">7</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
       <tr>
-        <th scope="col">8</th>
+        <th class="text-center" scope="col">1</th>
         <td scope="col">longtalong</td>
         <td scope="col">Nguyễn Long</td>
-        <td scope="col">0123554566</td>
+        <td class="text-center" scope="col">0123554566</td>
         <td scope="col">longtalong@gmail.com</td>
-        <td scope="col">Admin</td>
-        <td scope="col">Button</td>
+        <td class="text-center" scope="col">Admin</td>
+        <td class="text-center" scope="col">
+          <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button>
+            <button type="button" class="btn btn-outline-primary"><i class="fas fa-times"></i></button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -120,12 +160,12 @@
   </nav>
 </div>
 
-<!---- Modal ---->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!---- Add Modal ---->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content custom-modal">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel">Tạo tài khoản mới</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -139,11 +179,45 @@
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label text-end">Phân quyền</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <select class="form-select">
+                <option value="" disabled selected>Lựa chọn vai trò</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label text-end">Tên nhân viên</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Email</label>
+            <div class="col-sm-9">
+              <input type="Email" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Ngày sinh</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Chức vụ</label>
+            <div class="col-sm-9">
+              <select class="form-select">
+                <option value="" disabled selected></option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Mật khẩu</label>
             <div class="col-sm-9">
               <input type="text" class="form-control">
             </div>
@@ -157,5 +231,83 @@
     </div>
   </div>
 </div>
-<a href="{{ route('logout' )}}">Đăng xuất</a>
+
+<!---- Edit Modal ---->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content custom-modal">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thông tin tài khoản</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Tên đăng nhập</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Phân quyền</label>
+            <div class="col-sm-9">
+              <select class="form-select">
+                <option value="" disabled selected>Lựa chọn vai trò</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Tên nhân viên</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Email</label>
+            <div class="col-sm-9">
+              <input type="Email" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Ngày sinh</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Chức vụ</label>
+            <div class="col-sm-9">
+              <select class="form-select">
+                <option value="" disabled selected></option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label text-end">Mật khẩu</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success text-light">Đăng ký</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Bỏ qua</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function editUser(rowId) {
+
+  }
+</script>
+
 @endsection

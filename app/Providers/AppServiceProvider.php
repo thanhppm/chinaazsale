@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Role;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($v){
+            $v->with([
+                'cats' => User::all(),
+                'listrole' => Role::all(),
+            ]);
+        });
     }
 }

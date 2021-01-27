@@ -4,7 +4,7 @@
 
 <div class="text-center custom-sign-in">
   <form class="form-signin">
-    <h1 class="mb-3 font-weight-normal">Chinaazle Admin</h1>
+    <h1 class="mb-3 font-weight-normal">ChinaAZ Admin</h1>
     <h5 class="mb-3 font-weight-normal">Phục hồi mật khẩu</h5>
     <label for="inputUserName" class="visually-hidden">Tài khoản</label>
     <input type="text" id="inputUserName" class="form-control mb-2" placeholder="Tên tài khoản">
