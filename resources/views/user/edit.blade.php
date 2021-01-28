@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Thêm mới tài khoản')
+
 @section('content')
     
-
+@include('partials.nav')
  <h5 class="" style="text-align:center">Chỉnh sửa tài khoản</h5>
             <div class="container">
                 <div class="row">
@@ -32,25 +33,25 @@
                         
                           <input type="tel" class="form-control" name="phone" value="{{$user->phone}}">
                         
-                    </div>
+                    </div> 
                     
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="">Chức vụ</label>
                         <div class="col-sm-9">
                               
                         </div>
-                    </div> --}}
-                    {{-- <div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <label for="password">Mật khẩu</label>
                         
                         <input type="password" class="form-control" name="password">      
                         
-                    </div> --}}
-                    <div class="form-group">
+                    </div>
+                     <div class="form-group">
                         <label for="">Chức vụ</label>
                         <select class="form-control" name="roles[]" multiple="multiple">
 
-                            <option selected>default</option>
+                           
                             @foreach ($roles as $role)
                                 <option 
                                 {{$list_role_of_user->contains($role->id) ? 'selected' : ''}}
@@ -62,10 +63,14 @@
                     </div>
                     <hr>
                     <button type="submit" class="btn btn-success text-light" >Save</button>
-                {{-- <button type="button"  class="btn" style="background-color: burlywood;">Close</button> --}}
+               
                 </form>
             </div>
             </div>
+
+            
+            
+            
             
                 
   
@@ -75,6 +80,6 @@
          
         
 
-{{-- script ajax --}}
+
 
 @endsection

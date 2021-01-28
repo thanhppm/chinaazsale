@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Thêm mới tài khoản')
 @section('content')
-    
+@include('partials.nav')  
 
  <h5 class="" style="text-align:center">Tạo tài khoản mới</h5>
             <div class="container">
                 <div class="row">
-                <form action="" class="col-md-4" method="POST">
+                <form action="" class="col-md-4" method="POST" >
                     @csrf
                     <div class="form-group">
                         <label for="name">Tên đăng nhập</label>

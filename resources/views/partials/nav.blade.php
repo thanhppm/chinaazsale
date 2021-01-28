@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="/dashboard" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+          <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
         </li>
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,9 +37,9 @@
             <i class="fas fa-money-bill"></i> Thu chi
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="income">Thu</a></li>
-            <li><a class="dropdown-item" href="outcome">Chi</a></li>
-            <li><a class="dropdown-item" href="payment-detail">Sổ chi tiết</a></li>
+            <li><a class="dropdown-item" href="{{ route('income')}}">Thu</a></li>
+            <li><a class="dropdown-item" href="{{ route('outcome')}}">Chi</a></li>
+            <li><a class="dropdown-item" href="{{ route('payment-detail')}}">Sổ chi tiết</a></li>
           </ul>
         </li>
         <li class="nav-item">

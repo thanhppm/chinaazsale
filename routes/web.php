@@ -67,6 +67,18 @@ Route::middleware(['adminlogin'])->group(function () {
                 Route::get('/fee', function () {
                     return view('templates.fee');
                 })->name('fee');
+                
+                Route::get('/income', function () {
+                    return view('templates.income');
+                })->name('income');
+                Route::get('/outcome', function () {
+                    return view('templates.outcome');
+                })->name('outcome');
+                Route::get('/payment-detail', function () {
+                    return view('templates.payment-detail');
+                })->name('payment-detail');
+                
+               
                 //kho TQ
                 Route::get('/warehouse-china', function () {
                     return view('templates.china-warehouse');
@@ -104,4 +116,9 @@ Route::middleware(['adminlogin'])->group(function () {
     //xóa xóa role 
     Route::get('/delete/{id}','RoleController@delete')->name('role.delete');
     });
+
+
+    Route::get('/dashboard', function () {
+        return view('index');
+    })->name('dashboard'); 
 });

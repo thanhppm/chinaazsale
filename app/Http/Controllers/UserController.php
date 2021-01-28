@@ -103,9 +103,9 @@ class UserController extends Controller
         //cập nhật bảng user
         $this->user->where('id',$id)->update([
             'name' => $request->name,
-            'name' => $request->username,
-            'name' => $request->email,
-            'name' => $request->phone,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
 
         //cập nhật bảng role_user

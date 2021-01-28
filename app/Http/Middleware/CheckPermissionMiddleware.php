@@ -43,6 +43,6 @@ class CheckPermissionMiddleware
         {
             return $next($request);
         }
-        return abort(401);   
+        return redirect()->route('dashboard')->with('warning','Bạn không có quyền truy cập');   
     }
 }
