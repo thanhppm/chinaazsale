@@ -49,7 +49,7 @@ class RoleController extends Controller
         // }
         $role_create->permissions()->attach($request->permission);//->roles():gọi phương thức roles() trong model User
         DB::commit();
-        return redirect()->route('role.index');
+        return redirect()->route('role.index')->with('success','Thêm vai trò thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }
@@ -79,7 +79,7 @@ class RoleController extends Controller
         $role_update=$this->role->find($id);
         $role_update->permissions()->attach($request->permission);
         DB::commit();
-        return redirect()->route('role.index');
+        return redirect()->route('role.index')->with('success','sửa vai trò thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }
@@ -96,7 +96,7 @@ class RoleController extends Controller
             //xóa quyền của role trong bảng role_permisison
             $role->permissions()->detach();//detach nguwocjj lại với attach,nó sẽ xóa đi tất cả bản ghi thuộc user này
             DB::commit();
-            return redirect()->route('role.index');
+            return redirect()->route('role.index')->with('success','Xóa vai trò thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }

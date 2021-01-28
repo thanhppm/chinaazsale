@@ -66,23 +66,23 @@ Route::middleware(['adminlogin'])->group(function () {
             
                 Route::get('/fee', function () {
                     return view('templates.fee');
-                })->name('fee');
+                })->name('fee')->middleware('checkpermission:chi-phi');
                 
                 Route::get('/income', function () {
                     return view('templates.income');
-                })->name('income');
+                })->name('income')->middleware('checkpermission:thu-chi');
                 Route::get('/outcome', function () {
                     return view('templates.outcome');
-                })->name('outcome');
+                })->name('outcome')->middleware('checkpermission:thu-chi');
                 Route::get('/payment-detail', function () {
                     return view('templates.payment-detail');
-                })->name('payment-detail');
+                })->name('payment-detail')->middleware('checkpermission:thu-chi');
                 
                
                 //kho TQ
                 Route::get('/warehouse-china', function () {
                     return view('templates.china-warehouse');
-                })->name('china-warehouse');
+                })->name('china-warehouse')->middleware('checkpermission:kho-trung-quoc');
                 Route::get('/china-warehouse-create-cont', function () {
                     return view('templates.china-warehouse-create-cont');
                 })->name('china-create-cont');
@@ -93,7 +93,7 @@ Route::middleware(['adminlogin'])->group(function () {
                 //kho Hà Nội
                 Route::get('/hanoi-warehouse', function () {
                     return view('templates.blank');
-                })->name('hanoi-warehouse');
+                })->name('hanoi-warehouse')->middleware('checkpermission:kho-ha-noi');
     });
 
 

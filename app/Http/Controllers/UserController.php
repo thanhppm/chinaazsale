@@ -81,7 +81,7 @@ class UserController extends Controller
         // }
         $user_create->roles()->attach($request->roles);//->roles():gọi phương thức roles() trong model User
         DB::commit();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success','Thêm tài khoản thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }
@@ -113,7 +113,7 @@ class UserController extends Controller
         $user_update=$this->user->find($id);
         $user_update->roles()->attach($request->roles);
         DB::commit();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success','Sửa tài khoản thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }
@@ -130,7 +130,7 @@ class UserController extends Controller
             //xóa vai trò của user
             $user->roles()->detach();//detach nguwocjj lại với attach,nó sẽ xóa đi tất cả bản ghi thuộc user này
             DB::commit();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with('success','Xóa tài khoản thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
         }

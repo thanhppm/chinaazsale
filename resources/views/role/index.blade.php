@@ -14,6 +14,11 @@
                 <button class="btn btn-outline-secondary me-3" type="submit"><i class="fas fa-search"></i></button>
                 <button class="btn btn-outline-success">Xóa</button>
             </form>
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <strong>Chúc mừng !</strong>{{\Session::get('success')}}
+            </div>
+            @endif
             <a type="button" class="btn btn-outline-success"  href="{{ route('role.add') }}">Thêm vai trò <i class="fas fa-plus-circle"></i></a>
         </div>
     </div>
@@ -73,5 +78,7 @@
 
     {{-- script --}}
     {{-- @include('extend_templates.elements.script') --}}
-    
+    <script type="text/javascript">
+        $("div.alert").delay(3000).slideUp();//đóng thông báo
+    </script>
 @endsection
